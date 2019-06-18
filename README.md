@@ -70,4 +70,4 @@ Received number is : 8
 
 
 
-Welcome star and initpull request!
+Welcome star and pull request!
