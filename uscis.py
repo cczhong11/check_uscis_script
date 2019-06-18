@@ -40,7 +40,7 @@ class USCIS(object):
         except Exception as e:
             if self.opt["verr"]:
                 print(e)
-            return 0
+        return 0
 
 
     def multiprocess(self,nums):
