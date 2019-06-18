@@ -30,13 +30,15 @@ class USCIS(object):
             rs = s.find('div',"current-status-sec").text
             rs = rs.replace("Your Current Status:","")
             rs = re.sub(r'[\t\n\r+]',"",rs)
-            if self.opt["v"]:
+
+            rev = 0
+            if "Case Was Received" in rs:
+                rev = 1
+            elif "Produced" in rs or "Delivered" in rs or "Mailed To Me" in rs or "Picked" in rs:
+                rev = -1
+            if rev != 0 and self.opt["v"]:
                 print("{}:{}".format(num,rs.strip()))
-            if "Received" in rs:
-                return 1
-            if "Produced" in rs or "Delivered" in rs or "Mailed To Me" in rs or "Picked" in rs:
-                return -1
-            
+            return rev
         except Exception as e:
             if self.opt["verr"]:
                 print(e)
