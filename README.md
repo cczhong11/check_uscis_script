@@ -33,7 +33,7 @@ optional arguments:
 
 Example:
 
-```python
+```
 $ python3 uscis.py --start 1990200000 --range 100 
 Start num is YSC1990200000
 End num is YSC1990200099
@@ -44,7 +44,7 @@ Received number is : 73
 
 Show all status
 
-```python
+```
 $ python uscis.py --start 1990200000 --range 10 --seq -v 
 
 Start num is YSC1990200000
