@@ -24,7 +24,7 @@ class USCIS(object):
         
     def getstatus(self,num):
     
-        r= requests.post('https://egov.uscis.gov/casestatus/mycasestatus.do;    jsessionid=1BB3B6D3F42E0A9B1A6A42F27D80203C',data={"changeLocale":"","appReceiptNum":num,   "initCaseSearch":"CHECK STATUS"})
+        r= requests.post('https://egov.uscis.gov/casestatus/mycasestatus.do',data={"changeLocale":"","appReceiptNum":num,   "initCaseSearch":"CHECK STATUS"})
         try:
             s=BeautifulSoup(r.content,"lxml")
             rs = s.find('div',"current-status-sec").text
