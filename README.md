@@ -69,5 +69,9 @@ Received number is : 8
 ![](screenshot.png)
 
 
+If you don't know how to use it, you can add me wechat account
+
+![](https://tczimg.s3.amazonaws.com/wechat.png)
+
 
 Welcome star and pull request!
