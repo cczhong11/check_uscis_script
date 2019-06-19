@@ -7,7 +7,7 @@ A simple Python script help you know more about USCIS status
 Requirements:
 
 1. Python3.5+
-2. Run `pip install -r requirements.txt`
+2. Run `pip3 install -r requirements.txt`
 
 
 ## Run
