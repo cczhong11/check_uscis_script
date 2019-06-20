@@ -30,9 +30,9 @@ class USCIS(object):
             rs = s.find('div',"current-status-sec").text
             rs = rs.replace("Your Current Status:","")
             rs = re.sub(r'[\t\n\r+]',"",rs)
-
+            rs_info = s.find('div', "rows text-center").text
             rev = 0
-            if "Case Was Received" in rs:
+            if "Case Was Received" in rs and ("I-765" in rs_info or "I-129" in rs_info):
                 rev = 1
             elif "Produced" in rs or "Delivered" in rs or "Mailed To Me" in rs or "Picked" in rs:
                 rev = -1
