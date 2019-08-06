@@ -23,16 +23,16 @@ class USCIS(object):
        
         
     def getstatus(self,num):
-    
-        r= requests.post('https://egov.uscis.gov/casestatus/mycasestatus.do',data={"changeLocale":"","appReceiptNum":num,   "initCaseSearch":"CHECK STATUS"})
+        header = {"User-Agent":"User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"}
+        r= requests.post('https://egov.uscis.gov/casestatus/mycasestatus.do',headers=header,data={"changeLocale":"","appReceiptNum":num,   "initCaseSearch":"CHECK STATUS"})
         try:
             s=BeautifulSoup(r.content,"lxml")
             rs = s.find('div',"current-status-sec").text
             rs = rs.replace("Your Current Status:","")
             rs = re.sub(r'[\t\n\r+]',"",rs)
-
+            rs_info = s.find('div', "rows text-center").text
             rev = 0
-            if "Case Was Received" in rs:
+            if "Case Was Received" in rs and ("I-765" in rs_info or "I-129" in rs_info):
                 rev = 1
             elif "Produced" in rs or "Delivered" in rs or "Mailed To Me" in rs or "Picked" in rs:
                 rev = -1
